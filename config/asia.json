@@ -1,0 +1,93 @@
+[
+    {
+      "country": "Singapore",
+      "chinese_population": 3360000,
+      "average_salary_usd": {
+        "min": 5500,
+        "max": 7500
+      },
+      "is_upwork_available": true,
+      "continent":"Asia"
+    },
+    {
+      "country": "Japan",
+      "chinese_population": 700000,
+      "average_salary_usd": {
+        "min": 4500,
+        "max": 6500
+      },
+      "is_upwork_available": true,
+      "continent":"Asia"
+    },
+    {
+      "country": "Hong Kong",
+      "chinese_population": 7350000,
+      "average_salary_usd": {
+        "min": 3500,
+        "max": 5500
+      },
+      "is_upwork_available": false,
+      "continent":"Asia"
+    },
+    {
+      "country": "United Arab Emirates (Dubai)",
+      "chinese_population": 300000,
+      "average_salary_usd": {
+        "min": 3000,
+        "max": 5000
+      },
+      "is_upwork_available": true,
+      "continent":"Asia"
+    },
+    {
+      "country": "Israel",
+      "chinese_population": 50000,
+      "average_salary_usd": {
+        "min": 3500,
+        "max": 5500
+      },
+      "is_upwork_available": false,
+      "continent":"Asia"
+    },
+    {
+      "country": "Qatar",
+      "chinese_population": 200000,
+      "average_salary_usd": {
+        "min": 3000,
+        "max": 4500
+      },
+      "is_upwork_available": true,
+      "continent":"Asia"
+    },
+    {
+      "country": "Taiwan",
+      "chinese_population": 23800000,
+      "average_salary_usd": {
+        "min": 2500,
+        "max": 4000
+      },
+      "is_upwork_available": false,
+      "continent":"Asia"
+    },
+    {
+      "country": "China (Mainland)",
+      "chinese_population": 1400000000,
+      "average_salary_usd": {
+        "min": 2500,
+        "max": 4000
+      },
+      "is_upwork_available": true,
+      "continent":"Asia"
+    },
+    {
+      "country": "Malaysia",
+      "chinese_population": 6700000,
+      "average_salary_usd": {
+        "min": 2000,
+        "max": 3500
+      },
+      "is_upwork_available": false,
+      "continent":"Asia"
+    }
+  ]
+  

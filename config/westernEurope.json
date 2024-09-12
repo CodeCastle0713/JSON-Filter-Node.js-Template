@@ -1,0 +1,102 @@
+[
+  {
+    "country": "France",
+    "chinese_population": 600000,
+    "average_salary_usd": {
+      "min": 4500,
+      "max": 5500
+    },
+    "is_upwork_available": true,
+    "continent": "Europe"
+  },
+  {
+    "country": "Germany",
+    "chinese_population": 400000,
+    "average_salary_usd": {
+      "min": 5000,
+      "max": 6000
+    },
+    "is_upwork_available": true,
+    "continent": "Europe"
+  },
+  {
+    "country": "Italy",
+    "chinese_population": 300000,
+    "average_salary_usd": {
+      "min": 2500,
+      "max": 3500
+    },
+    "is_upwork_available": false,
+    "continent": "Europe"
+  },
+  {
+    "country": "Netherlands",
+    "chinese_population": 100000,
+    "average_salary_usd": {
+      "min": 5500,
+      "max": 6500
+    },
+    "is_upwork_available": false,
+    "continent": "Europe"
+  },
+  {
+    "country": "Spain",
+    "chinese_population": 200000,
+    "average_salary_usd": {
+      "min": 3000,
+      "max": 4000
+    },
+    "is_upwork_available": true,
+    "continent": "Europe"
+  },
+  {
+    "country": "Belgium",
+    "chinese_population": 80000,
+    "average_salary_usd": {
+      "min": 4500,
+      "max": 5500
+    },
+    "is_upwork_available": false,
+    "continent": "Europe"
+  },
+  {
+    "country": "Austria",
+    "chinese_population": 40000,
+    "average_salary_usd": {
+      "min": 4000,
+      "max": 5000
+    },
+    "is_upwork_available": true,
+    "continent": "Europe"
+  },
+  {
+    "country": "Sweden",
+    "chinese_population": 30000,
+    "average_salary_usd": {
+      "min": 4500,
+      "max": 5500
+    },
+    "is_upwork_available": true,
+    "continent": "Europe"
+  },
+  {
+    "country": "Portugal",
+    "chinese_population": 50000,
+    "average_salary_usd": {
+      "min": 2500,
+      "max": 3500
+    },
+    "is_upwork_available": false,
+    "continent": "Europe"
+  },
+  {
+    "country": "Ireland",
+    "chinese_population": 20000,
+    "average_salary_usd": {
+      "min": 5000,
+      "max": 6000
+    },
+    "is_upwork_available": false,
+    "continent": "Europe"
+  }
+]

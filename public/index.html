@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Node.js App</title>
+</head>
+<body>
+    <span style="display: flex; justify-content: center;">
+        <div style="margin-right: 100px;">
+            <h1>
+                Population
+            </h1>
+            <div>
+                <button style="cursor: pointer;" id="population_up">Up</button>
+                <button style="cursor: pointer" id="population_down">Down</button>
+            </div>
+        </div>
+        <div style="margin-right: 100px;">
+            <h1>
+                Average
+            </h1>
+            <div>
+                <button style="cursor: pointer;" id="salary_up">Up</button>
+                <button style="cursor: pointer" id="salary_down">Down</button>
+            </div>
+        </div>
+        <div style="margin-right: 100px;">
+            <h1>Filtering on Upwork availability</h1>
+            <button style="cursor: pointer;" id="upwork_available">On</button>
+        </div>
+        <div>
+            <h1>Continet</h1>
+            <select style="width: 100%;" id="continentSelect">
+                <option>None</option>
+                <option>Asia</option>
+                <option>Europe</option>
+            </select>
+        </div>
+    </span>
+    <hr>
+    <div style="display: flex; text-align: center; color: brown;">
+        <h3 style="width:20%">Country</h3>
+        <h3 style="width:20%">Population</h3>
+        <h3 style="width:20%">Average</h3>
+        <h3 style="width:20%">Upwork Available</h3>
+        <h3 style="width:20%">Continent</h3>
+    </div>
+    <div id="content_area"></div>
+</body>
+<script>    
+    const contentArea = document.getElementById("content_area");
+    
+    const status = {
+        population_up : false,
+        population_down : false,
+        average_up : false,
+        average_down : false,
+        available : false,
+        continent : "none"
+    }
+
+    let jsonData = []
+    fetch('/api/json-data')
+        .then(response => response.json())
+        .then(data => {
+            jsonData = data.flat();
+            addContent(jsonData);
+        })
+        .catch(error => console.error('Error fetching JSON data:', error));
+    
+    function addContent(data){
+        data.forEach(element => {
+            const outDiv = document.createElement('div');
+            const country = document.createElement('h3');
+            const population = document.createElement('h3');
+            const salary = document.createElement('h3');
+            const upworkAvailable = document.createElement('h3');
+            const continent = document.createElement('h3');
+
+            outDiv.style.display = "flex";
+            outDiv.style.textAlign = "center";
+            country.style.width="20%";
+            population.style.width="20%";
+            salary.style.width="20%";
+            upworkAvailable.style.width="20%";
+            continent.style.width="20%";
+
+            country.innerHTML = element.country;
+            population.innerHTML = element.chinese_population;
+            salary.innerHTML = (element.average_salary_usd.min + element.average_salary_usd.max)/2;
+            upworkAvailable.innerHTML = element.is_upwork_available ? "Yes" : "No";
+            continent.innerHTML = element.continent;
+            
+            outDiv.appendChild(country)
+            outDiv.appendChild(population)
+            outDiv.appendChild(salary)
+            outDiv.appendChild(upworkAvailable)
+            outDiv.appendChild(continent)
+
+            contentArea.appendChild(outDiv)
+        });
+    }
+    function doAction(){
+        contentArea.innerHTML = '';
+        let result = [...jsonData]; 
+
+        if(status.population_up){
+            result.sort((a, b) => a.chinese_population - b.chinese_population);
+        }
+        if(status.population_down){
+            result.sort((a, b) => b.chinese_population - a.chinese_population);
+        }
+
+        if(status.average_up){
+            result.sort((a, b) => (a.average_salary_usd.min + a.average_salary_usd.max)/2 - (b.average_salary_usd.min + b.average_salary_usd.max)/2);
+        }
+        if(status.average_down){
+            result.sort((a, b) => (b.average_salary_usd.min + b.average_salary_usd.max)/2 - (a.average_salary_usd.min + a.average_salary_usd.max)/2);
+        }
+
+        if(status.available){
+            result = result.filter(element => element.is_upwork_available);
+        }
+
+        if(status.continent !== "None" && status.continent !== "none"){
+            result = result.filter(element => element.continent === status.continent);
+        }
+
+        addContent(result);
+    }
+
+    document.getElementById('population_up').addEventListener('click', function() {
+        status.population_up = true;
+        status.population_down = false;
+        status.average_up = false;
+        status.average_down = false;
+        doAction();
+    });
+    document.getElementById('population_down').addEventListener('click', function() {
+        status.population_up = false;
+        status.population_down = true;
+        status.average_up = false;
+        status.average_down = false;
+        doAction();
+    });
+    document.getElementById('salary_up').addEventListener('click', function() {
+        status.population_up = false;
+        status.population_down = false;
+        status.average_up = true;
+        status.average_down = false;
+        doAction();
+    });
+    document.getElementById('salary_down').addEventListener('click', function() {
+        status.population_up = false;
+        status.population_down = false;
+        status.average_up = false;
+        status.average_down = true;
+        doAction();
+    });
+    document.getElementById('upwork_available').addEventListener('click', function() {
+        status.available = !status.available;
+        if(status.available)
+            document.getElementById("upwork_available").innerHTML = "Off"
+        else
+            document.getElementById("upwork_available").innerHTML = "On"
+        doAction();
+    });
+    document.getElementById('continentSelect').addEventListener('change', function() {
+        const selectedValue = document.getElementById('continentSelect').value;
+        status.continent = selectedValue; 
+        doAction();
+    });
+</script>
+</html>
